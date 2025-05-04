@@ -7,7 +7,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const signup = async (req, res) => {
   try {
-    const  existedEmail = await user.findOne({ where: { email: req.body.email } });
+    const existedEmail = await user.findOne({
+      where: { email: req.body.email },
+    });
     if (existedEmail) {
       return res.status(400).json({ error: "Email already exists" });
     }

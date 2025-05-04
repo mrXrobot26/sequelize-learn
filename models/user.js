@@ -26,10 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       role: {
-        type: DataTypes.ENUM('admin', 'user'),
-        defaultValue: 'user',
+        type: DataTypes.ENUM("admin", "user"),
+        defaultValue: "user",
         allowNull: false,
-      }
+      },
     },
     {
       sequelize,
@@ -41,11 +41,11 @@ module.exports = (sequelize, DataTypes) => {
           }
         },
         beforeUpdate: async (user) => {
-          if (user.changed('password')) {
+          if (user.changed("password")) {
             user.password = await bcrypt.hash(user.password, 10);
           }
-        }
-      }
+        },
+      },
     }
   );
   return user;
